@@ -3,7 +3,8 @@ const routerMap = {
     path: '/',
     component: Layout,
     meta: { active: false },
-    hidden: true,
+    hidden: false,
+    name:'任务',
     children: [
         {
             path: '/petitionVideo',

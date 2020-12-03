@@ -29,7 +29,7 @@ name: "pageHeader",
   width: 100%;
   height: 100%;
   color: #fff;
-  background-color: #4373a5;
+  background-color: transparent;
 }
 .logo{
   margin-left: 60px;
