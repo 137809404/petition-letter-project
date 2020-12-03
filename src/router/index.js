@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import task from "./task"
+import notice from  "./notice"
 
 Vue.use(VueRouter);
 
@@ -16,7 +17,8 @@ const routes = [
     component: () => import('@/views/login/index'),
     hidden: true
   },
-    task
+    task,
+    notice
 ];
 
 const router = new VueRouter({

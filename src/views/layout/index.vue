@@ -44,13 +44,23 @@ export default {
 .container{
   width: 100vw;
   height: 100vh;
+  background: -webkit-gradient(linear, 0 0, 0 50%, from(skyblue), to(white));
+  /*background: -webkit-gradient(linear, 0 70%, 0 100%, from(white), to(skyblue));*/
+}
+.el-aside{
+  overflow: visible;
 }
 .el-container{
   height: 100%;
+  margin: 0px 20px;
+  background-color: transparent;
 }
 .el-header{
   height: 100px !important;
   padding: 0px;
+}
+.el-main{
+  background-color: white;
 }
 
 </style>
