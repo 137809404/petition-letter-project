@@ -23,8 +23,8 @@ import pageHeader from './components/pageHeader'
 import pageAside from './components/pageAside'
 export default {
   components: {
-    pageMain,
     pageHeader,
+    pageMain,
     pageAside
   },
   created () {
