@@ -8,11 +8,13 @@ const routes = [
   {
     path: '/',
     redirect: '/login',
+    hidden: true
   },
   {
     path: '/login',
     name: '登录',
     component: () => import('@/views/login/index'),
+    hidden: true
   },
     task
 ];
