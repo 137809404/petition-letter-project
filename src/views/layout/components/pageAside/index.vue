@@ -8,7 +8,7 @@
     router>
       <el-menu-item-group v-for="(item,key) in routesArr" :index="key+1+''" :key=key>
         <template class="grouptitle" slot="title">{{item.name}}</template>
-        <el-menu-item v-for="(subitem,key) in item.children" :key=key :index="subitem.path">{{subitem.name}}</el-menu-item>
+        <el-menu-item v-for="(subitem,key) in item.children" v-show="!subitem.hidden" :key=key :index="subitem.path">{{subitem.name}}</el-menu-item>
       </el-menu-item-group>
     </el-menu>
   </div>

@@ -7,18 +7,16 @@ const routerMap = {
     name:'接访管理',
     children: [
         {
-            path: '/petition',
+            path: '/petitionList',
             name: '视频信访',
             component: () => import('@/views/task/petitionVideo/petitionList'),
             meta: { active: false },
-            children:[
-                {
-                    path: '/petitionVideo',
-                    name: '视频录制',
-                    component: () => import('@/views/task/petitionVideo/index'),
-                    meta: { active: false }
-                }
-            ]
+        },{
+            path: '/petitionVideo',
+            name: '视频录制',
+            component: () => import('@/views/task/petitionVideo/index'),
+            meta: { active: false },
+            hidden:true
         },
         {
             path: '/videoRecords',
