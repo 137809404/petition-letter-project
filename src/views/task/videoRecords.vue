@@ -30,8 +30,8 @@
           </el-form-item>
         </el-col>
 
-        <el-col :span="5" style="margin-left: 50px">
-          <el-button type="primary" @click="search">查找</el-button>
+        <el-col :span="5" >
+          <el-button type="primary" class="btnStyle" @click="search">查找</el-button>
         </el-col>
       </el-row>
       <br>
@@ -153,5 +153,7 @@ export default {
 </script>
 
 <style scoped>
-
+.btnStyle {
+  margin-left: 50px
+}
 </style>
