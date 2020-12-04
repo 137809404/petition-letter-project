@@ -1,12 +1,10 @@
 <template>
-<div>
-  <h3>接访预约</h3>
-</div>
+<div>待信访人列表</div>
 </template>
 
 <script>
 export default {
-name: "apply"
+name: "petitionList"
 }
 </script>
 
