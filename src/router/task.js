@@ -4,7 +4,7 @@ const routerMap = {
     component: Layout,
     meta: { active: false },
     hidden: false,
-    name:'接访管理',
+    name:'信访事项音视频',
     children: [
         {
             path: '/petitionList',
@@ -20,7 +20,7 @@ const routerMap = {
         },
         {
             path: '/videoRecords',
-            name: '信访记录',
+            name: '视频记录',
             component: () => import('@/views/task/videoRecords'),
             meta: { active: false }
         }

@@ -1,10 +1,10 @@
 <template>
-<div>接访审批</div>
+<div>查询码查询</div>
 </template>
 
 <script>
 export default {
-name: "interviewApproval"
+name: "index"
 }
 </script>
 

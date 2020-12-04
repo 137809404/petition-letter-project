@@ -1,12 +1,10 @@
 <template>
-<div>
-  <h3>数据统计</h3>
-</div>
+<div>登记查询</div>
 </template>
 
 <script>
 export default {
-name: "index"
+name: "applicationRecord"
 }
 </script>
 

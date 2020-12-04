@@ -4,24 +4,41 @@ const routerMap = {
     component: Layout,
     meta: { active: false },
     hidden: false,
-    name:'记录查询',
+    name:'信访事项查询',
     children: [
         {
-            path: '/applicationRecord',
-            name: '申请记录',
-            component: () => import('@/views/record/applicationRecord'),
+            path: '/registrationRecord',
+            name: '登记查询',
+            component: () => import('@/views/record/registrationRecord'),
             meta: { active: false }
         },
         {
-            path: '/petitionHistory',
-            name: '历史接访',
-            component: () => import('@/views/record/petitionHistory'),
+            path: '/transferDeal',
+            name: '转交办理查询',
+            component: () => import('@/views/record/transferDeal'),
+            meta: { active: false }
+        },{
+            path: '/queryCode',
+            name: '查询码查询',
+            component: () => import('@/views/record/queryCode'),
             meta: { active: false }
         },
         {
             path: '/statistics',
-            name: '数据统计',
+            name: '信访数量统计',
             component: () => import('@/views/record/statistics'),
+            meta: { active: false }
+        },
+        {
+            path: '/higherAuthorities',
+            name: '上级转交办件查询',
+            component: () => import('@/views/record/higherAuthorities'),
+            meta: { active: false }
+        },
+        {
+            path: '/leadeReception',
+            name: '领导接待查询',
+            component: () => import('@/views/record/leadeReception'),
             meta: { active: false }
         }
     ]

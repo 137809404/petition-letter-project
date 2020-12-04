@@ -1,10 +1,10 @@
 <template>
-<div>申请管理</div>
+<div>信访事项录入</div>
 </template>
 
 <script>
 export default {
-name: "petitionManage"
+name: "index"
 }
 </script>
 

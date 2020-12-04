@@ -1,12 +1,10 @@
 <template>
-<div>
-  <h3>接访预约</h3>
-</div>
+<div>接受信访事项</div>
 </template>
 
 <script>
 export default {
-name: "apply"
+name: "index"
 }
 </script>
 

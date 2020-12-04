@@ -1,7 +1,5 @@
 <template>
-<div>
-  <h3>数据统计</h3>
-</div>
+<div>上级转交办件</div>
 </template>
 
 <script>

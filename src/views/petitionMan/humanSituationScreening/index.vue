@@ -1,12 +1,10 @@
 <template>
-<div>
-  <h3>数据统计</h3>
-</div>
+  <div>信访人情况甄别</div>
 </template>
 
 <script>
 export default {
-name: "index"
+  name: "index"
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
 <div class="header">
-  <div class="logo">远程接访管理系统平台</div>
+  <div><div class="logo">远程接访管理系统平台</div></div>
   <div class="func">
     <el-button type="text" icon="el-icon-s-home" @click="goview('视频信访')">首页</el-button>
     <el-button type="text" icon="el-icon-upload2" @click="goview('登录')">注销</el-button>
@@ -62,7 +62,7 @@ name: "pageHeader",
 }
 .time{
   position: absolute;
-  right: 5px;
+  right: 20px;
   top: 5px;
 }
 </style>

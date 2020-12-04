@@ -1,7 +1,5 @@
 <template>
-<div>
-  <h3>数据统计</h3>
-</div>
+<div>信访人查询搜索</div>
 </template>
 
 <script>

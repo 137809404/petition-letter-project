@@ -1,10 +1,12 @@
 <template>
-<div>申请记录</div>
+  <div>
+    <h3>转办查询</h3>
+  </div>
 </template>
 
 <script>
 export default {
-name: "applicationRecord"
+  name: "petitonRecords"
 }
 </script>
 

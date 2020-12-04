@@ -1,7 +1,5 @@
 <template>
-<div>
-  <h3>数据统计</h3>
-</div>
+<div>转办信访事项</div>
 </template>
 
 <script>

@@ -4,18 +4,24 @@ const routerMap = {
     component: Layout,
     meta: { active: false },
     hidden: false,
-    name:'接访申请',
+    name:'信访事项录入',
     children: [
         {
-            path: '/apply',
-            name: '接访申请',
-            component: () => import('@/views/apply/apply'),
+            path: '/enterPetitions',
+            name: '信访事项录入',
+            component: () => import('@/views/petition/enterPetitions'),
             meta: { active: false }
         },
         {
-            path: '/petitionManage',
-            name: '接访管理',
-            component: () => import('@/views/apply/petitionManage'),
+            path: '/transferPetition',
+            name: '转办信访事项',
+            component: () => import('@/views/petition/transferPetition'),
+            meta: { active: false }
+        },
+        {
+            path: '/acceptPetition',
+            name: '接受信访事项',
+            component: () => import('@/views/petition/acceptPetition'),
             meta: { active: false }
         }
     ]
