@@ -9,7 +9,7 @@ const routerMap = {
         {
             path: '/petitionVideo',
             name: '视频信访',
-            component: () => import('@/views/task/petitionVideo'),
+            component: () => import('@/views/task/petitionVideo/index'),
             meta: { active: false }
         },
         {
