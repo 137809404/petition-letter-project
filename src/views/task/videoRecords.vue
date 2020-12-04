@@ -1,11 +1,7 @@
 <template>
   <div>
+    <h3>信访记录查询</h3>
     <el-form ref="form" label-width="120px" table-width @submit.native.prevent>
-
-
-      <el-form-item label="信访录像查询">
-      </el-form-item>
-
       <!-- 搜索条件 -->
 
       <el-row>

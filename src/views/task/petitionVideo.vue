@@ -1,5 +1,6 @@
 <template>
 <div style="display: flex;flex-direction: column;width: 95%">
+  <h3>视频信访</h3>
   <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
     <div style="margin-left: 5px;margin-right:5px;margin-top: 5px;margin-bottom: 5px;width: 100%;
     border-radius: 5px;

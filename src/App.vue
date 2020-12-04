@@ -14,6 +14,9 @@ export default {
 </script>
 
 <style>
+h3{
+  margin-top: 0px;
+}
 html,body,#app{
   height: 100%;
 }
