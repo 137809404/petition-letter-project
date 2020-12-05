@@ -59,7 +59,6 @@ export default {
 }
 .el-main{
   background-color: white;
-  overflow: visible;
 }
 
 </style>
