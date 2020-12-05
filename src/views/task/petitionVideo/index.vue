@@ -208,7 +208,7 @@ export default {
       second:0,//秒
       time:'',
       str:'00:00:00',
-      url:'https://stream7.iqilu.com/10339/upload_transcode/202002/18/20200218114723HDu3hhxqIT.mp4',
+      url:'',
       //文件
       fileList: [
           {name: 'food.jpeg',
