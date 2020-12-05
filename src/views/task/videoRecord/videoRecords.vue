@@ -108,6 +108,9 @@ export default {
       ]
     }
   },
+  mounted() {
+    this.search()
+  },
   methods: {
     search() {
       let searchId = this.searchPetitionId
@@ -144,6 +147,12 @@ export default {
       this.$message({
         type: 'information',
         message: '正在观看录像，录像编号为： ' + row.recordId
+      })
+      this.goViewWithQuery('查看录像',row)
+    },
+    goViewWithQuery (name, data) {
+      this.$router.push({ name, query: { data: data } }).catch(err => {
+        err && console.log('刷新') // 待优化
       })
     }
 

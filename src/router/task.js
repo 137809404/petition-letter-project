@@ -21,8 +21,15 @@ const routerMap = {
         {
             path: '/videoRecords',
             name: '视频记录',
-            component: () => import('@/views/task/videoRecords'),
+            component: () => import('@/views/task/videoRecord/videoRecords'),
             meta: { active: false }
+        },
+        {
+            path: '/video',
+            name: '查看录像',
+            component: () => import('@/views/task/videoRecord/watchVideo'),
+            meta: { active: false },
+            hidden: true
         }
     ]
 }
