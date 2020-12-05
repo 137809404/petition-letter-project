@@ -22,7 +22,6 @@
           <el-form-item label="录制时间">
             <el-date-picker
                 v-model="recordDate"
-                align="right"
                 type="date"
                 placeholder="选择日期"
                 :picker-options="pickerOptions">
@@ -64,7 +63,7 @@ export default {
     return {
       searchPetitionId: '',
       petitioner:'',
-      recordDate:new Date(),
+      recordDate:null,
 
 
       recordsData: [],
