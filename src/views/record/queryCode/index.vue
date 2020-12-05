@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class="header"><h3>查询码查询</h3><el-button class="searchButton" @click="onSubmit">
+  <div class="header"><h3>查询码查询</h3><el-button type="primary" class="searchButton" @click="onSubmit">
     查询
   </el-button></div>
   <el-form ref="form" :model="form" label-width="100px">
