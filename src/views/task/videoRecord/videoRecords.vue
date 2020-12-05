@@ -1,38 +1,31 @@
 <template>
   <div>
     <h3>信访记录查询</h3>
-    <el-form ref="form" label-width="120px" table-width @submit.native.prevent>
+    <el-form ref="form" label-width="120px" :inline="true" table-width @submit.native.prevent>
       <!-- 搜索条件 -->
 
-      <el-row>
-        <el-col :span="5">
-          <el-form-item label="录像编号">
-            <el-input v-model="searchPetitionId"/>
-          </el-form-item>
-        </el-col>
+      <el-form-item label="录像编号">
+        <el-input v-model="searchPetitionId"/>
+      </el-form-item>
 
-        <el-col :span="5">
-          <el-form-item label="信访人">
-            <el-input v-model="petitioner"/>
-          </el-form-item>
-        </el-col>
+      <el-form-item label="信访人">
+        <el-input v-model="petitioner"/>
+      </el-form-item>
 
 
-        <el-col :span="6">
-          <el-form-item label="录制时间">
-            <el-date-picker
-                v-model="recordDate"
-                type="date"
-                placeholder="选择日期"
-                :picker-options="pickerOptions">
-            </el-date-picker>
-          </el-form-item>
-        </el-col>
+      <el-form-item label="录制时间">
+        <el-date-picker
+            v-model="recordDate"
+            type="date"
+            placeholder="选择日期"
+            :picker-options="pickerOptions">
+        </el-date-picker>
+      </el-form-item>
 
-        <el-col :span="5" >
-          <el-button type="primary" class="btnStyle" @click="search">查找</el-button>
-        </el-col>
-      </el-row>
+      <el-form-item>
+        <el-button type="primary" @click="search">查找</el-button>
+      </el-form-item>
+
       <br>
       <!-- 记录展示表格 -->
       <el-table :data="recordsData" ref="recordsTable">
@@ -62,8 +55,8 @@ export default {
   data() {
     return {
       searchPetitionId: '',
-      petitioner:'',
-      recordDate:null,
+      petitioner: '',
+      recordDate: null,
 
 
       recordsData: [],
@@ -94,17 +87,17 @@ export default {
       },
       colConfigs: [
         {prop: 'recordId', label: '记录编号'},
-        {prop: 'petitioner',label: '信访人'},
+        {prop: 'petitioner', label: '信访人'},
         {prop: 'startTime', label: '录制时间'},
         {prop: 'totalTime', label: '总时长'},
       ],
       tmpData: [
-        {recordId: '001', petitioner: '王先生',startTime: '2020/12/1', totalTime: '1h'},
-        {recordId: '001', petitioner: '张先生',startTime: '2020/12/2', totalTime: '1h'},
-        {recordId: '001', petitioner: '王先生',startTime: '2020/12/3', totalTime: '1h'},
-        {recordId: '002', petitioner: '张先生',startTime: '2020/12/3', totalTime: '2h'},
-        {recordId: '003', petitioner: '张先生',startTime: '2020/12/2', totalTime: '3h'},
-        {recordId: '003', petitioner: '张先生',startTime: '2020/12/3', totalTime: '3h'},
+        {recordId: '001', petitioner: '王先生', startTime: '2020/12/1', totalTime: '1h'},
+        {recordId: '001', petitioner: '张先生', startTime: '2020/12/2', totalTime: '1h'},
+        {recordId: '001', petitioner: '王先生', startTime: '2020/12/3', totalTime: '1h'},
+        {recordId: '002', petitioner: '张先生', startTime: '2020/12/3', totalTime: '2h'},
+        {recordId: '003', petitioner: '张先生', startTime: '2020/12/2', totalTime: '3h'},
+        {recordId: '003', petitioner: '张先生', startTime: '2020/12/3', totalTime: '3h'},
       ]
     }
   },
@@ -123,35 +116,35 @@ export default {
       // 如果设置筛选条件，则进行过滤
 
       if (searchId.trim().length !== 0)
-      this.recordsData = this.tmpData.filter(item=>{
-        return item.recordId === searchId
-      })
+        this.recordsData = this.tmpData.filter(item => {
+          return item.recordId === searchId
+        })
 
       if (petitioner.trim().length !== 0)
-      this.recordsData = this.recordsData.filter(item=>{
-        return item.petitioner === petitioner
-      })
+        this.recordsData = this.recordsData.filter(item => {
+          return item.petitioner === petitioner
+        })
 
       if (date != null)
-      this.recordsData = this.recordsData.filter(item=>{
-        return item.startTime === date.toLocaleDateString()
-      })
+        this.recordsData = this.recordsData.filter(item => {
+          return item.startTime === date.toLocaleDateString()
+        })
 
       this.$message({
         type: 'information',
-        message: '查询到 '+this.recordsData.length + ' 条记录'
+        message: '查询到 ' + this.recordsData.length + ' 条记录'
       })
     },
 
-    watch(row){
+    watch(row) {
       this.$message({
         type: 'information',
         message: '正在观看录像，录像编号为： ' + row.recordId
       })
-      this.goViewWithQuery('查看录像',row)
+      this.goViewWithQuery('查看录像', row)
     },
-    goViewWithQuery (name, data) {
-      this.$router.push({ name, query: { data: data } }).catch(err => {
+    goViewWithQuery(name, data) {
+      this.$router.push({name, query: {data: data}}).catch(err => {
         err && console.log('刷新') // 待优化
       })
     }
@@ -161,7 +154,5 @@ export default {
 </script>
 
 <style scoped>
-.btnStyle {
-  margin-left: 50px
-}
+
 </style>
