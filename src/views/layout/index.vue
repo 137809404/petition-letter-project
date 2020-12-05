@@ -48,6 +48,7 @@ export default {
 }
 .el-aside{
   overflow: visible;
+  width: 100%;
 }
 .el-container{
   margin: 0px 20px;

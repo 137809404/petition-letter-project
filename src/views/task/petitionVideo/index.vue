@@ -1,4 +1,4 @@
-<template>
+<template xmlns:el-col="http://www.w3.org/1999/html">
 <div style="display: flex;flex-direction: column;width: 95%">
   <h3>视频信访</h3>
   <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
@@ -26,6 +26,19 @@
               <el-button type="primary" icon="el-icon-circle-close" @click="videoStop()"></el-button>
               <el-button type="primary" icon="el-icon-refresh" @click="videoReset()"></el-button>
             </el-button-group>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="12">
+            <div style="margin: 10px">
+              <video :src="url" width="100%"  controls  class="video"></video>
+            </div>
+
+          </el-col>
+          <el-col :span="12">
+            <div style="margin: 10px">
+              <video :src="url" width="100%"  controls  class="video"></video>
+            </div>
           </el-col>
         </el-row>
 
@@ -195,6 +208,7 @@ export default {
       second:0,//秒
       time:'',
       str:'00:00:00',
+      url:'https://stream7.iqilu.com/10339/upload_transcode/202002/18/20200218114723HDu3hhxqIT.mp4',
       //文件
       fileList: [
           {name: 'food.jpeg',
