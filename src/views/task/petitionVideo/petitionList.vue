@@ -3,39 +3,28 @@
   <div class="background">
     <h3>视频信访</h3>
     <div class="div-card">
-      <el-form v-model="Formsearch" label-width="100px" :inline="true" ref="SearchForm">
-          <el-form-item label="登记号" >
-            <el-input v-model="Formsearch.PetidSearch" style="width: 350px" ></el-input>
-          </el-form-item>
-        <el-form-item label="登记时间">
-            <el-date-picker
-
-                v-model="Formsearch.time"
-                type="daterange"
-                align="right"
-                unlink-panels
-                range-separator="至"
-                start-placeholder="开始日期"
-                end-placeholder="结束日期"
-                :picker-options="pickerOptions2">
-            </el-date-picker>
+      <el-form :model="searchItem" label-width="100px" :inline="true" ref="SearchForm">
+        <el-form-item label="登记号">
+          <el-input v-model="searchItem.PetidSearch" style="width: 350px"></el-input>
         </el-form-item>
-          <el-form-item>
-          <div class="buttons">
-              <el-button type="primary" icon="el-icon-search"  @click="search('SearchForm')">搜索</el-button>
-              <el-button @click="reset('SearchForm')">重置</el-button>
-          </div>
-          </el-form-item>
+        <el-form-item label="登记时间">
+          <el-date-picker
+              v-model="searchItem.date"
+              type="date"
+              align="right"
+              unlink-panels
+          >
+          </el-date-picker>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" icon="el-icon-search" @click="search()">搜索</el-button>
+        </el-form-item>
 
       </el-form>
-
-
-
-
     </div>
     <div>
       <el-table
-          :data="tableData5"
+          :data="recordData"
           style="width: 100%">
         <el-table-column type="expand">
           <template slot-scope="props">
@@ -97,19 +86,14 @@
 
 <script>
 export default {
-name: "petitionList",
-  data(){
-    return{
-      Formsearch:{
-        PetidSearch:'',
-        time: '',
+  name: "petitionList",
+  data() {
+    return {
+      searchItem: {
+        PetidSearch: '',
+        date: null,
       },
 
-
-      //时间查询
-      // week: '',
-      // month: '',
-      // year: '',
       pickerOptions2: {
         shortcuts: [{
           text: '最近一周',
@@ -137,69 +121,91 @@ name: "petitionList",
           }
         }]
       },
-      value6: '',
-      value7: '',
 
 
-
-      tableData5: [{
+      tableData: [{
         Petid: '001',
         name: '叶修',
-        date:'2020-12-4',
-        IDcard:'610431200010154211',
+        date: '2020/12/4',
+        IDcard: '610431200010154211',
 
         desc: '为国争光',
         address: '上海市普陀区真北路',
         government: '和平区',
-        shopId: '10333'
+
       }, {
         Petid: '002',
         name: '叶秋',
-        date:'2020-12-5',
-        IDcard:'610431200010154211',
+        date: '2020/12/5',
+        IDcard: '610431200010154211',
 
         desc: '职业选手',
         address: '上海市普陀区真北路',
         government: '浑南区',
-        shopId: '10333'
+
       }, {
         Petid: '003',
         name: '哈哈',
-        date:'2020-12-5',
-        IDcard:'610431200010154211',
+        date: '2020-12-5',
+        IDcard: '610431200010154211',
 
         desc: 'helloworld',
         address: '上海市普陀区真北路',
         government: '沈阳市',
-        shopId: '10333'
+
       }, {
         Petid: '004',
         name: '呵呵',
-        date:'2020-12-5',
-        IDcard:'610431200010154211',
+        date: '2020-12-5',
+        IDcard: '610431200010154211',
 
         desc: '信访信息描述',
         address: '上海市普陀区真北路',
         government: '东北大学',
-        shopId: '10333'
+
       }],
+      recordData:[],
 
     }
   },
+  beforeMount() {
+    this.recordData = this.tableData
+  },
 
 
-  methods:{
-    goview (name) {
-      this.$router.push({ name }).catch(err => {
+  methods: {
+    goview(name) {
+      this.$router.push({name}).catch(err => {
         err && console.log('刷新') // 待优化
       })
     },
-    search(){
+    search() {
+      let searchId = this.searchItem.PetidSearch
 
+      let date = this.searchItem.date
+
+
+      this.recordsData = this.tableData
+
+      // 如果设置筛选条件，则进行过滤
+
+      if (searchId.trim().length !== 0)
+        this.recordData = this.tableData.filter(item => {
+          return item.Petid === searchId
+        })
+
+
+      if (date != null)
+        this.recordData = this.recordData.filter(item => {
+          return item.date === date.toLocaleDateString()
+        })
+
+      this.$message({
+        type: 'information',
+        message: '查询到 ' + this.recordData.length + ' 条记录'
+      })
     },
-    reset(SearchForm){
-      this.$refs[SearchForm].resetFields();
-    },
+
     goViewWithQuery(name, data) {
       this.$router.push({name, query: {data: data}}).catch(err => {
         err && console.log('刷新') // 待优化
@@ -210,24 +216,17 @@ name: "petitionList",
 </script>
 
 <style scoped>
-/*.div-card{*/
-/*  margin-left: 5px;*/
-/*  margin-right:5px;*/
-/*  margin-top: 5px;*/
-/*  margin-bottom: 5px;*/
-/*  width: 98%;*/
-/*  border-radius: 5px;*/
-/*  box-shadow:  0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);*/
-/*  padding-bottom: 5px;padding-right: 20px*/
-/*}*/
+
 .demo-table-expand {
   font-size: 0;
 }
+
 .demo-table-expand label {
   width: 90px;
   color: #99a9bf;
 }
-.buttons{
+
+.buttons {
   display: flex;
   flex-direction: row;
   /*align-items: center;*/
@@ -236,9 +235,10 @@ name: "petitionList",
 
   margin: 5px;
 
-  padding:0px;
+  padding: 0px;
   padding-left: 40px;
 }
+
 .demo-table-expand .el-form-item {
   margin-right: 0;
   margin-bottom: 0;
