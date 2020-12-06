@@ -3,21 +3,10 @@
   <div class="background">
     <h3>视频信访</h3>
     <div class="div-card">
-
-
-
-      <el-row>
-        <div style="font-size: 20px;font-weight: bold;
-        display: flex;flex-direction: column;align-items: flex-start;justify-content: flex-start;
-        margin-top: 15px;margin-left: 5px;margin-bottom: 10px;">登记查询</div>
-      </el-row>
       <el-form v-model="Formsearch" label-width="100px" :inline="true" ref="SearchForm">
-        <el-row>
           <el-form-item label="登记号" >
             <el-input v-model="Formsearch.PetidSearch" style="width: 350px" ></el-input>
           </el-form-item>
-        </el-row>
-        <el-row>
         <el-form-item label="登记时间">
             <el-date-picker
 
@@ -31,8 +20,6 @@
                 :picker-options="pickerOptions2">
             </el-date-picker>
         </el-form-item>
-        </el-row>
-        <el-row>
           <el-form-item>
           <div class="buttons">
               <el-button type="primary" icon="el-icon-search"  @click="search('SearchForm')">搜索</el-button>
@@ -40,15 +27,13 @@
           </div>
           </el-form-item>
 
-        </el-row>
-
       </el-form>
 
 
 
 
     </div>
-    <div>待信访人列表
+    <div>
       <el-table
           :data="tableData5"
           style="width: 100%">
@@ -80,7 +65,7 @@
               </el-form-item>
 
               <el-form-item>
-                <el-button @click="goview('视频录制')">前往视频录制</el-button>
+                <el-button @click="goViewWithQuery('视频录制',props.row)">前往视频录制</el-button>
               </el-form-item>
 
             </el-form>
@@ -214,22 +199,27 @@ name: "petitionList",
     },
     reset(SearchForm){
       this.$refs[SearchForm].resetFields();
+    },
+    goViewWithQuery(name, data) {
+      this.$router.push({name, query: {data: data}}).catch(err => {
+        err && console.log('刷新') // 待优化
+      })
     }
   }
 }
 </script>
 
 <style scoped>
-.div-card{
-  margin-left: 5px;
-  margin-right:5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  width: 98%;
-  border-radius: 5px;
-  box-shadow:  0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
-  padding-bottom: 5px;padding-right: 20px
-}
+/*.div-card{*/
+/*  margin-left: 5px;*/
+/*  margin-right:5px;*/
+/*  margin-top: 5px;*/
+/*  margin-bottom: 5px;*/
+/*  width: 98%;*/
+/*  border-radius: 5px;*/
+/*  box-shadow:  0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);*/
+/*  padding-bottom: 5px;padding-right: 20px*/
+/*}*/
 .demo-table-expand {
   font-size: 0;
 }

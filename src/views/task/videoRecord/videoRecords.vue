@@ -3,7 +3,6 @@
     <h3>信访记录查询</h3>
     <el-form ref="form" label-width="120px" :inline="true" table-width @submit.native.prevent>
       <!-- 搜索条件 -->
-
       <el-form-item label="录像编号">
         <el-input v-model="searchPetitionId"/>
       </el-form-item>
