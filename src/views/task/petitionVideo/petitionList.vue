@@ -12,7 +12,7 @@
               v-model="searchItem.date"
               type="date"
               align="right"
-              unlink-panels
+
           >
           </el-date-picker>
         </el-form-item>
