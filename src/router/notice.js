@@ -11,6 +11,12 @@ const routerMap = {
             name: '系统通知',
             component: () => import('@/views/notice/systemNotice/index'),
             meta: { active: false }
+        },
+        {
+            path: '/notice',
+            name: '通知',
+            component: () => import('@/views/notice/notice/index'),
+            meta: { active: false }
         }
     ]
 }
