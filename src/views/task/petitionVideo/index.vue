@@ -1,62 +1,62 @@
-<template xmlns:el-col="http://www.w3.org/1999/html">
-<div style="display: flex;flex-direction: column;width: 95%">
-  <h3>视频信访</h3>
-  <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-    <div style="margin-left: 5px;margin-right:5px;margin-top: 5px;margin-bottom: 5px;width: 100%;
-    border-radius: 5px;
-    box-shadow:  0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
-    padding-bottom: 5px;padding-right: 20px" >
-      <div style="margin: 5px;padding-top: 10px;padding-left: 5px">
-        <el-row>
-          <div style="font-size: 20px;font-weight: bold;
-        display: flex;flex-direction: column;align-items: flex-start;justify-content: flex-start;
-        margin-top: 15px;margin-left: 5px;margin-bottom: 10px;
-        ">视频录制</div>
-        </el-row>
-        <el-row>
-          <el-col :span="2">
-            <div style="font-size: 25px;width: auto;display: flex;flex-direction: column;align-items: center;justify-content: center;margin-top: 5px">
-              {{str}}
-            </div>
+<template>
+  <div>
+    <div class="header">
+      <h3><el-button style="color: black;height: 20px;padding: 0px;font-size: 20px" @click="goview('视频信访')" icon="el-icon-back" type="text"></el-button>视频录制</h3>
+      <el-button type="primary" class="searchButton" @click="onSubmit">
+        提交
+      </el-button>
+    </div>
+    <el-form label-width="100px">
+      <el-row>
+        <el-col :span="6"><div>
+          <el-form-item label="编号">
+            {{info.Petid}}
+          </el-form-item>
+        </div></el-col>
+        <el-col :span="6"><div><el-form-item label="姓名">
+          {{info.name}}
+        </el-form-item></div></el-col>
+        <el-col :span="8"><div>    <el-form-item label="身份证">
+          {{info.IDcard}}
+        </el-form-item></div></el-col>
+      </el-row>
+    </el-form>
+    <div class="div-card" >
+      <el-row>
+        <div style="font-size: 15px;font-weight: bold;margin-left: 5px;margin-bottom: 10px;
+        ">视频控制台</div>
+      </el-row>
+      <div style="width: 100%"  v-show="isrecording">
+        <div class="record-redio" >
+          <div>
+            <video :src="url" width="100%"  controls  class="video"></video>
+          </div>
 
-          </el-col>
-          <el-col :span="4">
-            <el-button-group style="margin-left: 10px">
-              <el-button type="primary" icon="el-icon-caret-right" @click="videoStart()"></el-button>
-              <el-button type="primary" icon="el-icon-circle-close" @click="videoStop()"></el-button>
-              <el-button type="primary" icon="el-icon-refresh" @click="videoReset()"></el-button>
-            </el-button-group>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="12">
-            <div style="margin: 10px">
-              <video :src="url" width="100%"  controls  class="video"></video>
-            </div>
-
-          </el-col>
-          <el-col :span="12">
-            <div style="margin: 10px">
-              <video :src="url" width="100%"  controls  class="video"></video>
-            </div>
-          </el-col>
-        </el-row>
-
+        </div>
+        <div class="record-redio">
+          <div>
+            <video :src="url" width="100%"  controls  class="video"></video>
+          </div>
+        </div>
+      </div>
+      <div style="text-align: center">
+        <el-button-group style="margin-left: 10px">
+          <el-button type="success" icon="el-icon-caret-right" @click="videoStart()"></el-button>
+          <el-button type="danger" icon="el-icon-circle-close" @click="videoStop()"></el-button>
+          <el-button type="primary" icon="el-icon-refresh" @click="videoReset()"></el-button>
+        </el-button-group>
+      </div>
+      <div v-show="isrecording" style="font-size: 25px;text-align: center">
+        {{str}}
       </div>
     </div>
-
-    <div style="margin-left: 5px;margin-right:5px;margin-top: 5px;margin-bottom: 5px;width: 100%;
-    border-radius: 5px;
-    box-shadow:  0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
-    padding-bottom: 5px;padding-right: 20px">
+    <div class="div-card">
       <el-row>
-        <div style="font-size: 20px;font-weight: bold;
-        display: flex;flex-direction: column;align-items: flex-start;justify-content: flex-start;
-        margin-top: 15px;margin-left: 15px;margin-bottom: 10px;
+        <div style="font-size: 15px;font-weight: bold;margin-left: 5px;margin-bottom: 10px;
         ">信访记录</div>
       </el-row>
       <el-row>
-        <div style="margin: 15px;width: 700px">
+        <div style="margin: 15px;width: 80%">
           <el-upload
               class="upload-demo"
               action="https://jsonplaceholder.typicode.com/posts/"
@@ -73,7 +73,7 @@
         </div>
       </el-row>
       <label>
-        <textarea v-model=text style="margin: 15px;width: 700px;height: 200px;" placeholder="信访内容记录">
+        <textarea v-model=text style="margin: 15px;width: 80%;height: 200px;" placeholder="信访内容记录">
 
       </textarea>
       </label>
@@ -81,23 +81,15 @@
     </div>
 
 
-    <div style="margin-left: 5px;margin-right:5px;margin-top: 5px;margin-bottom: 5px;width: 100%;
-
-    padding-bottom: 5px;padding-right: 20px">
-      <el-form-item>
-        <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
-        <el-button @click="resetForm('ruleForm')">重置</el-button>
-      </el-form-item>
-    </div>
-
-  </el-form>
-</div>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
+      isrecording:false,
+      info:{},
       text:"",
       //视频计时
       hour:0,//定义时，分，秒，毫秒并初始化为0；
@@ -109,78 +101,20 @@ export default {
       url:'',
       //文件
       fileList: [
-          {name: 'food.jpeg',
-            url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'},
-          {name: 'food2.jpeg',
-            url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}],
-
-      ruleForm: {
-        name: '',
-        gender:'',
-        IDcard:'',
-        phonenumber:'',
-        politics:'',
-        address:'',
-
-
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
-      },
-      rules: {
-        name: [
-          { required: true, message: '姓名不能为空', trigger: 'blur' },
-          { min: 2, max: 5, message: '长度在 2 到 5 个字符', trigger: 'blur' }
-        ],
-        IDcard: [
-          { required: true, message: '身份证号不能为空', trigger: 'blur' },
-          { min: 18, max: 18, message: '请输入18位手机号', trigger: 'blur' }
-        ],
-        phonenumber: [
-          { required: true, message: '手机号不能为空', trigger: 'blur' },
-          { min: 11, max: 11, message: '请输入11位手机号', trigger: 'blur' }
-        ],
-        gender: [
-          { required: true, message: '请选择性别', trigger: 'change' }
-        ],
-        politics:[
-          {required :true,message:'请选择政治面貌',trigger:'change'}
-        ],
-        date1: [
-          { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
-        ],
-        date2: [
-          { type: 'date', required: true, message: '请选择时间', trigger: 'change' }
-        ],
-        type: [
-          { type: 'array', required: true, message: '请至少选择一个活动性质', trigger: 'change' }
-        ],
-        resource: [
-          { required: true, message: '请选择活动资源', trigger: 'change' }
-        ],
-        desc: [
-          { required: true, message: '请填写活动形式', trigger: 'blur' }
-        ]
-      }
+        {name: 'food.jpeg',
+          url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'},
+        {name: 'food2.jpeg',
+          url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}],
     };
   },
+  mounted(){
+    this.info=this.$route.query.data
+    console.log(this.info)
+  },
   methods: {
-    submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          alert('submit!');
-        } else {
-          console.log('error submit!!');
-          return false;
-        }
-      });
-    },
-    resetForm(formName) {
-      this.$refs[formName].resetFields();
+    submit() {
+      console.log("submit")
+
     },
 
     //视频
@@ -188,6 +122,7 @@ export default {
       this.timeStart();
       var flag = true;
       if (flag===true){
+        this.isrecording=true
         this.$message({
           message: '视频录制开始',
           center: true,
@@ -201,7 +136,7 @@ export default {
       var flag = true;
       if (flag===true){
         this.$message({
-          message: '视频录制停止',
+          message: '暂停',
           center: true,
           type:"warning"
         });
@@ -209,13 +144,13 @@ export default {
       /*TODO*/
     },
     videoReset(){
+      this.isrecording=false
       this.reset();
       var flag = true;
       if (flag===true){
         this.$message({
           message: '重新录制',
-          center: true,
-          type:"success"
+          center: true
         });
       }
       /*TODO*/
@@ -277,6 +212,11 @@ export default {
     },
     beforeRemove(file) {
       return this.$confirm(`确定移除 ${ file.name }？`);
+    },
+    goview (name){
+      this.$router.push({ name }).catch(err => {
+        err && console.log('刷新') // 待优化
+      })
     }
   }
 }
@@ -285,13 +225,24 @@ export default {
 
 <style scoped>
 .div-card{
-  margin-left: 5px;
-  margin-right:5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  width: 100%;
+  margin:10px;
   border-radius: 5px;
   box-shadow:  0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
-  padding-bottom: 5px;padding-right: 20px
+  padding-bottom: 5px;
+  padding-top: 10px;
+  padding-left: 5px;
+}
+.record-redio{
+  width: 50%;
+  display: inline-block;
+}
+.searchButton{
+  height: 35px;
+  padding: 0px 20px;
+  margin-right: 30px;
+}
+.header{
+  display: flex;
+  justify-content: space-between;
 }
 </style>

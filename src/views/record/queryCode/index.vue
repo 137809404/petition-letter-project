@@ -6,7 +6,7 @@
   <el-form ref="form" :model="form" label-width="100px">
     <el-row>
       <el-col :span="4"><div>
-        <el-form-item label="仅国家级来件">
+        <el-form-item label="仅国家局来件">
           <el-checkbox v-model="form.country"></el-checkbox>
         </el-form-item>
       </div></el-col>
