@@ -42,7 +42,7 @@
     </div>
   </el-card>
   <div style="width: 100%">
-    <div style="width: 100%;display: flex;flex-direction: row;align-items: center;justify-content: center">
+    <div style="width: 100%;display: flex;flex-direction: row;align-items: center;justify-content: center;margin-top: 10px">
       <el-pagination
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
@@ -140,13 +140,13 @@ name: "index",
         },
 
       ],
-
+      multipleSelection: [],
       //分页
       currentPage: 1,
 
       //通知筛选
       FormData: {
-        daterange: '',
+        dateRange: '',
         noticeType: '',
         noticeTopic: ''
       },
