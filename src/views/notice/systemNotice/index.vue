@@ -78,7 +78,7 @@
         </el-table-column>
         <el-table-column
             prop="noticeTopic"
-            label="地址"
+            label="消息标题"
             show-overflow-tooltip>
         </el-table-column>
         <el-table-column
